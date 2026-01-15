@@ -11,6 +11,20 @@ FoundIt! is a sleek, modern web application designed to help communities recover
 - **My Submissions**: Track your personal reports and their moderation status.
 - **Responsive Design**: Elegant glassmorphism UI that works across devices.
 
+## 📸 Visual Preview
+
+### User Experience
+| Discover Feed | Report Submission |
+| :---: | :---: |
+| ![User Dashboard](images/user%20dashboard.png) | ![Report Form](images/report%20submission.png) |
+
+| My Activity | Detailed View |
+| :---: | :---: |
+| ![Submissions](images/submissions.png) | ![Item Details](images/item%20detail.png) |
+
+### Administrative Portal
+![Admin Dashboard](images/admin%20dashboard.png)
+
 ## 🛠️ Tech Stack
 
 - **Frontend**: Vanilla HTML5, CSS3 (Custom Variables & Animations), JavaScript (ES6+).
@@ -52,7 +66,6 @@ FoundIt! is a sleek, modern web application designed to help communities recover
    uvicorn fastapi_app.main:app --reload
    ```
 
-3. Open your browser to `http://127.0.0.1:8000`.
 
 ## 📂 Project Structure
 
@@ -60,10 +73,6 @@ FoundIt! is a sleek, modern web application designed to help communities recover
 - `frontend/`: HTML, CSS, and JS files (served automatically by the backend).
 - `uploads/`: Local storage for item images.
 
-## 🔑 Default Credentials
 
-- **User**: Sign up via the frontend.
-- **Admin**: Sign up and manually promote the user role in the SQLite `app.db`.
 
----
-*Created with ❤️ for a better community.*
+
