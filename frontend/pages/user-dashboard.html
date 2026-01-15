@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | FoundIt!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+</head>
+
+<body class="admin-body">
+    <div class="app-shell">
+        <!-- Top Navigation -->
+        <header class="app-header glass">
+            <div class="header-left">
+                <div class="app-logo">
+                    <i class="fas fa-search-location"></i>
+                    <span>FoundIt!</span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-btn active" data-view="browse">
+                    <i class="fas fa-compass"></i> Discover
+                </a>
+                <a href="#" class="nav-btn" data-view="report">
+                    <i class="fas fa-plus-circle"></i> Report
+                </a>
+                <a href="#" class="nav-btn" data-view="submissions">
+                    <i class="fas fa-list-ul"></i> Submissions
+                </a>
+            </nav>
+
+            <div class="header-right">
+                <div class="user-panel glass">
+                    <img id="userAvatar" src="https://ui-avatars.com/api/?name=User&background=14b8a6&color=fff"
+                        alt="Avatar">
+                    <div class="user-text">
+                        <p id="usernameDisplay" class="username">Guest</p>
+                    </div>
+                    <button id="logoutBtn" title="Logout" class="mini-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-wrapper">
+
+                <!-- Browse View -->
+                <div data-view-content="browse" class="tab-content active">
+                    <div class="view-header animate-fade">
+                        <div class="header-titles">
+                            <h1>Recent Activity</h1>
+                            <p>Real-time feed of lost and found objects in your area</p>
+                        </div>
+                        <div class="search-bar glass">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search categories, titles, locations...">
+                        </div>
+                    </div>
+                    <section id="itemsGrid" class="dashboard-grid animate-slide">
+                        <!-- Loaded by JS -->
+                    </section>
+                </div>
+
+                <!-- Report View -->
+                <div data-view-content="report" class="tab-content">
+                    <div class="view-header animate-fade">
+                        <div class="header-titles">
+                            <h1>Submit a Report</h1>
+                            <p>Provide details to help our community find or return an item</p>
+                        </div>
+                    </div>
+                    <div class="glass form-container animate-slide">
+                        <form id="reportForm">
+                            <div class="form-grid">
+                                <div class="field-group">
+                                    <label for="itemType">Action</label>
+                                    <select id="itemType" required>
+                                        <option value="lost">Lost Item</option>
+                                        <option value="found">Found Item</option>
+                                    </select>
+                                </div>
+                                <div class="field-group">
+                                    <label for="itemTitle">Brief Title</label>
+                                    <input type="text" id="itemTitle" placeholder="e.g. Silver Ring" required>
+                                </div>
+                                <div class="field-group">
+                                    <label for="itemCategory">Category</label>
+                                    <input type="text" id="itemCategory" placeholder="e.g. Jewelry" required>
+                                </div>
+                                <div class="field-group">
+                                    <label for="itemLocation">General Location</label>
+                                    <input type="text" id="itemLocation" placeholder="e.g. Library 2nd Floor" required>
+                                </div>
+                                <div class="field-group">
+                                    <label for="itemDate">Date</label>
+                                    <input type="date" id="itemDate" required>
+                                </div>
+                                <div class="field-group">
+                                    <label for="itemFile">Upload Photo (Optional)</label>
+                                    <input type="file" id="itemFile" accept="image/*">
+                                </div>
+                            </div>
+                            <div class="field-group" style="margin-top: 1.5rem;">
+                                <label for="itemDescription">Detailed Description</label>
+                                <textarea id="itemDescription" rows="4" placeholder="Any unique marks or details..."
+                                    required></textarea>
+                            </div>
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    POST REPORT <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- My Items View -->
+                <div data-view-content="submissions" class="tab-content">
+                    <div class="view-header animate-fade">
+                        <div class="header-titles">
+                            <h1>Your Activity</h1>
+                            <p>Monitor and manage your personal reporting history</p>
+                        </div>
+                        <button id="resyncBtn" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-sync-alt"></i> Force Re-Sync
+                        </button>
+                    </div>
+                    <section id="myItemsGrid" class="dashboard-grid animate-slide">
+                        <!-- Loaded by JS -->
+                    </section>
+                    <div id="diagnosticLog" class="glass"
+                        style="margin-top: 3rem; padding: 1.5rem; font-family: monospace; font-size: 0.8rem; color: #888; border-top: 1px solid var(--glass-border);">
+                        <strong>[DIAGNOSTIC CONSOLE]</strong>
+                        <div id="diagContent">Initialization complete...</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-content animate-slide">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div id="modalBody">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationHost"></div>
+
+    <script src="../js/user-dashboard.js"></script>
+</body>
+
+</html>

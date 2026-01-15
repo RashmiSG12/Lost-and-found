@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pymongo
+python-dotenv
+passlib[bcrypt]
+python-jose
+python-jose[cryptography]
+pydantic
+jose
+sqlalchemy
+sqlalchemy-utils
+aiosqlite
+motor

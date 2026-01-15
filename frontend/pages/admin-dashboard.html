@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Center | Lost & Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+
+<body class="admin-body">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <i class="fas fa-shield-halved"></i>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="pending">
+                    <i class="fas fa-clock"></i> Pending Reviews
+                </a>
+                <a href="#" class="nav-item" data-tab="approved">
+                    <i class="fas fa-check-circle"></i> Approved Items
+                </a>
+                <a href="#" class="nav-item" data-tab="users">
+                    <i class="fas fa-users"></i> Manage Users
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="Avatar">
+                    <div>
+                        <p id="adminUsername" class="username">Admin</p>
+                        <p class="role">System Moderator</p>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header animate-fade">
+                <div class="header-titles">
+                    <h1 id="pageTitle">Moderation Queue</h1>
+                    <p id="pageSubtitle">Review and manage pending item reports</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card glass">
+                        <span class="label">Pending</span>
+                        <span id="pendingCount" class="value">--</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="dashboardContainer" class="dashboard-container animate-slide">
+                <!-- Content loaded by JS -->
+                <div class="loading-spinner">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <p>Fetching data...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notificationHost"></div>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+
+</html>
